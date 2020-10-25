@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serverless Policy Generator</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css"
+      integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/solid.min.css"
+      integrity="sha512-SazV6tF6Ko4GxhyIZpKoXiKYndqzh7+cqxl9HDH7DGSpjkCN3QLqTAlhJHJnKxu3/2rfCsltzwFC4CmxZE1hPg=="
+      crossorigin="anonymous"
+    />
+    <script defer src="./main.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.2/dist/alpine.min.js"
+      defer
+    ></script>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <div class="container pt-6">
+      <div class="flex mb-2">
+        <h1 class="text-3xl">Serverless Policy Generator</h1>
+        <a
+          class="ml-4 self-center"
+          href="https://www.github.com/ajschmidt8"
+          target="_blank"
+          rel="noopener"
+        >
+          <img style="height: 28px" src="./github.svg" alt="" />
+        </a>
+      </div>
+      <p class="mb-6">
+        The generator below will create an IAM Role Policy with the minimum
+        required permissions for deploying, updating, and deleting a Lambda
+        function with an API Gateway endpoint via the
+        <a href="https://www.serverless.com/">Serverless framework</a>. It
+        combines rules from Dan Crumb's
+        <em
+          ><a
+            target="_blank"
+            rel="noopener"
+            href="https://github.com/dancrumb/generator-serverless-policy"
+            >generator-serverless-policy</a
+          ></em
+        >
+        project and
+        <a
+          target="_blank"
+          rel="noopener"
+          href="https://serverless-stack.com/chapters/customize-the-serverless-iam-policy.html"
+          >a chapter from serverless-stack.com</a
+        >.
+        <a
+          target="_blank"
+          rel="noopener"
+          href="https://www.serverless.com/blog/abcs-of-iam-permissions"
+          >This Serverless article</a
+        >
+        was also referenced.
+      </p>
+      <div x-data="generator()" x-init="initCopyButton()">
+        <div class="mb-4 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+          <div class="mb-4 sm:col-span-3">
+            <label class="text-input-label" for="name">Service Name</label>
+            <input
+              class="text-input"
+              id="name"
+              type="text"
+              x-model="serviceName"
+            />
+          </div>
+          <div class="mb-4 sm:col-span-3">
+            <label class="text-input-label" for="account"
+              >AWS Account Number</label
+            >
+            <input
+              class="text-input"
+              id="account"
+              type="text"
+              x-model="accountNumber"
+            />
+          </div>
+          <div class="mb-4 sm:col-span-3">
+            <label class="text-input-label" for="stage">Stage</label>
+            <input class="text-input" id="stage" type="text" x-model="stage" />
+          </div>
+
+          <div class="mb-4 sm:col-span-3">
+            <label for="region" class="text-input-label">Region</label>
+            <select id="region" class="select" x-model="region">
+              <option>us-east-1</option>
+              <option>us-east-2</option>
+              <option>us-west-1</option>
+              <option>us-west-2</option>
+              <option>af-south-1</option>
+              <option>ap-east-1</option>
+              <option>ap-northeast-1</option>
+              <option>ap-northeast-2</option>
+              <option>ap-south-1</option>
+              <option>ap-southeast-1</option>
+              <option>ap-southeast-2</option>
+              <option>ca-central-1</option>
+              <option>eu-central-1</option>
+              <option>eu-north-1</option>
+              <option>eu-south-1</option>
+              <option>eu-west-1</option>
+              <option>eu-west-2</option>
+              <option>eu-west-3</option>
+              <option>me-south-1</option>
+              <option>sa-east-1</option>
+            </select>
+          </div>
+        </div>
+
+        <div
+          class="bg-gray-500 px-8 py-2 rounded-t text-right flex items-center justify-between"
+        >
+          <div>Serverless Policy</div>
+          <div
+            id="copy-btn"
+            class="text-white bg-gray-800 hover:bg-gray-700 cursor-pointer rounded py-2 px-8 flex items-center justify-center"
+          >
+            Copy
+            <i class="fas fa-copy ml-2"></i>
+          </div>
+        </div>
+        <pre
+          class="hljs p-8"
+        ><code class="json" x-html="policyHTML"></code></pre>
+      </div>
+    </div>
+  </body>
+</html>

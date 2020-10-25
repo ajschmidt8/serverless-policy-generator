@@ -1,0 +1,29 @@
+@import "highlight.js/styles/github.css";
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+a {
+  @apply underline text-blue-800;
+}
+
+.text-input {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-5;
+}
+.text-input:focus {
+  @apply outline-none shadow-outline;
+}
+
+.text-input-label {
+  @apply block text-gray-700 text-sm font-bold mb-2;
+}
+
+.select {
+  @apply block w-full text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded shadow leading-5;
+}
+.select:focus {
+  @apply outline-none border-blue-300;
+}

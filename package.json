@@ -1,0 +1,20 @@
+{
+  "name": "serverless-policy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run clean && parcel src/index.html",
+    "clean": "rm -rf dist .cache",
+    "build": "npm run clean && parcel build src/index.html"
+  },
+  "keywords": [],
+  "author": "AJ Schmidt",
+  "license": "ISC",
+  "dependencies": {
+    "clipboard": "^2.0.6",
+    "highlight.js": "^10.3.1",
+    "parcel-bundler": "^1.12.4",
+    "tailwindcss": "^1.9.6"
+  }
+}
