@@ -29,7 +29,7 @@
         <h1 class="text-3xl">Serverless Policy Generator</h1>
         <a
           class="ml-4 self-center"
-          href="https://www.github.com/ajschmidt8"
+          href="https://github.com/ajschmidt8/serverless-policy-generator"
           target="_blank"
           rel="noopener"
         >
@@ -65,7 +65,7 @@
         >
         was also referenced.
       </p>
-      <div x-data="generator()" x-init="initCopyButton()">
+      <div class="mb-12" x-data="generator()" x-init="initCopyButton()">
         <div class="mb-4 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
           <div class="mb-4 sm:col-span-3">
             <label class="text-input-label" for="name">Service Name</label>
@@ -132,7 +132,7 @@
           </div>
         </div>
         <pre
-          class="hljs p-8"
+          class="hljs p-8 rounded-b"
         ><code class="json" x-html="policyHTML"></code></pre>
       </div>
     </div>
