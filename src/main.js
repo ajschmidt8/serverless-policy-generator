@@ -69,6 +69,8 @@ window.generator = function generator() {
             "logs:DeleteLogStream",
             "logs:DescribeLogStreams",
             "logs:FilterLogEvents",
+            "logs:DeleteRetentionPolicy",
+            "logs:PutRetentionPolicy",
           ],
           Resource: `arn:aws:logs:${this.region}:${this.accountNumber}:log-group:/aws/lambda/${this.serviceName}*:log-stream:*`,
           Effect: "Allow",
